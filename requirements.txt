@@ -1,0 +1,8 @@
+pillow
+pytesseract
+python-dotenv
+tqdm
+openai
+numpy
+opencv-python
+matplotlib

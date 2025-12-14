@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Environments / secrets
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data outputs
+data/output/*
+!data/output/.gitkeep
+
+# Notebook checkpoints
+.ipynb_checkpoints/
