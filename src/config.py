@@ -2,7 +2,7 @@
 Configuration utilities (e.g., loading API keys).
 """
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 import os
 
 load_dotenv()
