@@ -23,22 +23,22 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    jp_lines, en_lines = process_page(
+    regions, en_lines = process_page(
         image_path=args.image_path,
         use_model=not args.no_model,
     )
 
-    if not jp_lines:
+    if not regions:
         print("No text detected.")
         return
 
-    print("Detected text lines (JP / raw OCR):")
-    for i, line in enumerate(jp_lines, start=1):
-        print(f"[{i}] {line}")
+    print("Detected text regions (JP / raw OCR):")
+    for r in regions:
+        print(f"[{r.reading_index}] kind={r.kind} bbox={r.bbox} | {r.text}")
 
-    print("\nEnglish translation:")
-    for i, line in enumerate(en_lines, start=1):
-        print(f"[{i}] {line}")
+    print("\nEnglish translation (aligned with regions):")
+    for r, en in zip(regions, en_lines):
+        print(f"[{r.reading_index}] {en}")
 
 
 if __name__ == "__main__":
