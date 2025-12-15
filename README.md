@@ -11,18 +11,31 @@ This web application will:
 User Experience:
 The user begins by opening the website and selecting a page from their computer, which would usually be an image file (like a .JPG or .PNG) of a manga or comic. This image is then uploaded to the system for processing.
 The user might also be asked to choose the language of the comic (e.g., Japanese or Spanish) and the reading direction (e.g., right-to-left for Japanese manga).
-Once the image is uploaded, the system will “read” the page, which would not just be looking at the text, but also looking at the visual layout of the comic page. This includes:
+
+Once the image is uploaded, the system will “read” the page, which would not just be looking at the text, but also looking at the visual layout of the comic page. 
+
+This includes:
 Finding the speech bubbles, narration boxes, and sound effects on the page.
+
 Figuring out what order they should be read in, based on their position and direction of flow (top to bottom, left to right, or right to left).
+
 Recognizing the text inside each bubble or box, even if it’s handwritten, distorted, or stylized.	
-To do this, the system will look at shapes, patterns, and positions. It would not assume left-to-right text like a typical document scanner.
-After locating and reading the text in the original language, the system will start the translation process.
-To stay as close to the tonality of the original language as possible, the AI translation system will try to understand the context of the page, instead of converting word by word, like typical translation models. For example:
+
+To do this, the system will look at shapes, patterns, and positions. It would not assume left-to-right text like a typical document scanner. After locating and reading the text in the original language, the system will start the translation process.
+
+To stay as close to the tonality of the original language as possible, the AI translation system will try to understand the context of the page, instead of converting word by word, like typical translation models. 
+
+For example:
 If a character is shouting, or crying, or talking plainly, the translation will reflect that intensity, or calmness, and vice versa. (Bold letters, capitalized letters, italicised, etc.)
 If a sound effect (like bam! or whoosh!) appears, the system will choose the best English equivalent to match the scene. (e.g. Japanese or Eastern onomatopoeia differs from its Western counterpart.)
+
+
 Finally, the translated results are shown to the user in a clean, readable format. This may look like:
+
 A numbered list of translated lines, in the correct order (matching the order you would read the comic).
+\
 Optional visual overlays or highlights showing which translation came from which part of the image (for reference).
+
 A split view: original image on one side, translated text on the other. (Best choice) (combine 1. and 3. maybe)
  
 Project Pipeline:
