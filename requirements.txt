@@ -6,3 +6,4 @@ openai
 numpy
 opencv-python
 matplotlib
+torch
