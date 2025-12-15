@@ -8,7 +8,7 @@ This web application will:
 4.     Translate the extracted text into fluent, natural English while preserving the tone, context, and meaning as much as possible.
 5.     Display the translated text in a simple, readable format for users. (NOT OVERLAYED ON THE COMIC PAGE ITSELF)
  
-User Experience:
+## User Experience:
 The user begins by opening the website and selecting a page from their computer, which would usually be an image file (like a .JPG or .PNG) of a manga or comic. This image is then uploaded to the system for processing.
 The user might also be asked to choose the language of the comic (e.g., Japanese or Spanish) and the reading direction (e.g., right-to-left for Japanese manga).
 
@@ -38,7 +38,7 @@ Optional visual overlays or highlights showing which translation came from which
 
 A split view: original image on one side, translated text on the other. (Best choice) (combine 1. and 3. maybe)
  
-Project Pipeline:
+## Project Pipeline:
 
 Ø INPUT (FRONTEND)
 
