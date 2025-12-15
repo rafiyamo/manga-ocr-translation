@@ -33,14 +33,14 @@ If a sound effect (like bam! or whoosh!) appears, the system will choose the bes
 Finally, the translated results are shown to the user in a clean, readable format. This may look like:
 
 A numbered list of translated lines, in the correct order (matching the order you would read the comic).
-\
+
 Optional visual overlays or highlights showing which translation came from which part of the image (for reference).
 
 A split view: original image on one side, translated text on the other. (Best choice) (combine 1. and 3. maybe)
  
 ## Project Pipeline:
 
-Ø INPUT (FRONTEND)
+### Ø INPUT (FRONTEND)
 
 User accesses website. Uploads multiple images (comic/manga pages) at once.
 
@@ -52,7 +52,7 @@ Show thumbnails or previews of uploaded pages
 
 Send files to the backend for processing
 
-Ø PREPROCESSING (BACKEND)
+### Ø PREPROCESSING (BACKEND)
 
 Convert uploaded images to standard format and size
 
@@ -60,7 +60,7 @@ Apply grayscale, noise reduction, contrast enhancement (for better text detectio
 
 Use image orientation detection to ensure the page is upright
 
-Ø TEXT DETECTION
+### Ø TEXT DETECTION
 
 System detects the placements and order of speech bubbles, narration boxes, sound effects on the page.
 
@@ -70,7 +70,7 @@ Draw bounding boxes around detected areas (??)
 
 Classify each region, label each region(?) (e.g., speech bubble, sound effect, narration)
 
-Ø READING ORDER
+### Ø READING ORDER
 
 Analyze relative position of each bubble or box
 
@@ -78,15 +78,15 @@ Sort based on reading direction (left-right or right-left, top-down)
 
 Output an ordered list like Bubble 1 → SFX 1 → Narration → Bubble 2
 
-Ø OCR
+### Ø OCR
 
 Raw text extracted. Train model for stylized or handwritten fonts (manga/comic specific)
 
-Ø TRANSLATION
+### Ø TRANSLATION
 
 Translate text into fluent English trough custom built AI model.
 
-Ø OUTPUT FORMATTING
+### Ø OUTPUT FORMATTING
 
 (Possible) format as:
 
@@ -98,6 +98,6 @@ Page 1:
 
 [SFX]: “…”
 
-Ø DISPLAY RESULTS
+### Ø DISPLAY RESULTS
 
 User can download or copy the translated text. Will be provided options to download in different formats (??)
