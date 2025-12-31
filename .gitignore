@@ -19,3 +19,11 @@ data/output/*
 
 # Notebook checkpoints
 .ipynb_checkpoints/
+
+# Large generated parallel data splits
+data/parallel/jp_en_train.tsv
+data/parallel/jp_en_dev.tsv
+data/parallel/jp_en_test.tsv
+
+# Large downloaded JP-EN raw corpora (keep local only)
+data/parallel/raw_corpora/
