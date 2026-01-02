@@ -24,7 +24,7 @@ def ocr_image_to_lines(image_path: str) -> List[str]:
         raise FileNotFoundError(f"Image not found: {img_path}")
 
     img = Image.open(img_path)
-    raw_text = pytesseract.image_to_string(img, lang="eng")  # change to "jpn" later
+    raw_text = pytesseract.image_to_string(img, lang="jpn+eng")
 
     lines = [line.strip() for line in raw_text.splitlines()]
     lines = [line for line in lines if line]
