@@ -1,4 +1,4 @@
-# ComicBubble
+# 🫧 ComicBubble
 
 Japenese → English manga/comic OCR & translation pipeline with a CLI and minimal web UI.
 
