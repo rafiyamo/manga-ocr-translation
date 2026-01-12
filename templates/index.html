@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ComicBubble | Manga OCR + JP→EN Translation</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: #f3f4f6;
+      }
+      header {
+        padding: 1rem 2rem;
+        background: #ec4899; /* pink header */
+        color: #fdf2f8;
+        box-shadow: 0 4px 12px rgba(190, 24, 93, 0.25);
+      }
+      header h1 {
+        margin: 0;
+        font-size: 1.4rem;
+      }
+      header span {
+        display: block;
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+      main {
+        display: flex;
+        gap: 1.5rem;
+        padding: 1.5rem 2rem 2rem;
+        align-items: flex-start;
+      }
+      .panel {
+        background: #ffffff;
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      }
+      .left {
+        flex: 0 0 45%;
+      }
+      .right {
+        flex: 1;
+        max-height: calc(100vh - 7rem);
+        overflow-y: auto;
+      }
+      img.page-preview {
+        max-width: 100%;
+        border-radius: 0.5rem;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+      }
+      form.upload {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      input[type="file"] {
+        border: 1px solid #d1d5db;
+        padding: 0.4rem;
+        border-radius: 0.5rem;
+        background: #fff;
+      }
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 0.5rem 1.25rem;
+        cursor: pointer;
+        font-weight: 600;
+        background: #db2777;
+        color: #fdf2f8;
+      }
+      button:hover {
+        background: #be185d;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      .bubble {
+        border-bottom: 1px solid #e5e7eb;
+        padding: 0.6rem 0;
+      }
+      .bubble:last-child {
+        border-bottom: none;
+      }
+      .bubble-index {
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #9f1239;
+      }
+      .jp {
+        font-size: 0.95rem;
+        color: #111827;
+        white-space: pre-wrap;
+      }
+      .en {
+        margin-top: 0.1rem;
+        font-size: 0.95rem;
+        color: #1f2933;
+      }
+      .meta {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-top: 0.15rem;
+      }
+      .empty-message {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        ComicBubble
+        <span>JP→EN manga OCR &amp; translation demo</span>
+      </h1>
+    </header>
+
+    <main>
+      <!-- LEFT: upload + page preview -->
+      <section class="panel left">
+        <form
+          class="upload"
+          action="{{ url_for('index') }}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input type="file" name="image" accept="image/*" required />
+          <button type="submit">Upload &amp; Translate</button>
+        </form>
+
+        {% if image_path %}
+        <h2>Page preview</h2>
+        <img src="{{ image_path }}" alt="Manga page" class="page-preview" />
+        {% else %}
+        <p class="empty-message">
+          Upload a manga page to see OCR regions and translations side by side.
+        </p>
+        {% endif %}
+      </section>
+
+      <!-- RIGHT: translations -->
+      <section class="panel right">
+        <h2>Speech bubbles / text regions</h2>
+
+        {% if bubbles %}
+          {% for b in bubbles %}
+          <div class="bubble">
+            <div class="bubble-index">Region {{ loop.index }}</div>
+            <div class="jp">JP: {{ b.jp }}</div>
+            <div class="en">EN: {{ b.en }}</div>
+            <div class="meta">
+              kind={{ b.kind }},
+              bbox=(x={{ b.bbox[0] }}, y={{ b.bbox[1] }}, w={{ b.bbox[2] }}, h={{ b.bbox[3] }})
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p class="empty-message">
+            No regions yet – upload an image to run the model.
+          </p>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>
