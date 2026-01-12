@@ -23,3 +23,10 @@ trained on open parallel corpora.
   - Available via:
     - **CLI** (`src/cli.py`) – prints everything in the terminal.
     - **Web app** (`web_app.py`) – upload a page image and see it + translations side-by-side.
+   
+## How to run ComicBubble locally
+**1. Clone the repo**
+'''
+git clone https://github.com/<your-username>/manga-ocr-translation.git
+cd manga-ocr-translation
+'''
